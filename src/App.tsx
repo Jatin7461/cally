@@ -166,7 +166,7 @@ function App() {
       x: -400,
       y: 500,
       delay: 4.8,
-      // duration: 5.8,
+      duration: 20,
       ease: "power4"
     })
 
