@@ -9,8 +9,10 @@ import BottomLeft from './components/BottomLeft';
 import GhostImage from './components/GhostImage';
 import Button from './components/Button';
 import Flip from 'gsap/Flip';
+import CSSPlugin from 'gsap/CSSPlugin';
+
+const C = CSSPlugin;
 function App() {
-  console.log(window.innerWidth)
   const container: RefObject<HTMLInputElement> = React.createRef()
 
   useGSAP(() => {
@@ -167,7 +169,8 @@ function App() {
       y: 500,
       delay: 4.8,
       duration: 0.7,
-      ease: "power4"
+      ease: "power4",
+      onStart: () => { console.log('starting') }
     })
 
     gsap.from('.arrow2', {
