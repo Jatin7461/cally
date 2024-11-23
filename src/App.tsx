@@ -21,17 +21,18 @@ function App() {
     let mm = gsap.matchMedia()
 
     mm.add({
-      isLaptop: "(max-width: 1600px)",
-      isMonitor: "(min-width: 1920px)"
+      isMonitor: "(min-width: 1920px)",
+      isLaptop: "(max-width: 1919px)"
     }, (context) => {
 
-      let { isLaptop, isMonitor }: any = context.conditions
+      let { isMonitor, isLaptop }: any = context.conditions
+      console.log(isMonitor)
       gsap.timeline().fromTo('.ghostimg', {
-        yPercent: isLaptop ? 15 : 45,
-        scale: isLaptop ? 1 : 1.5,
+        yPercent: !isMonitor ? 15 : 45,
+        scale: !isMonitor ? 1 : 1.5,
       }, {
-        yPercent: isLaptop ? 0 : 10,
-        scale: isLaptop ? 0.7 : 1,
+        yPercent: !isMonitor ? 0 : 10,
+        scale: !isMonitor ? 0.7 : 1,
         delay: 1,
         ease: "power4.in"
       })
@@ -87,8 +88,8 @@ function App() {
       ease: 'power4.in',
       opacity: 0,
       onComplete: () => {
-        // let ghostimgDiv = document.querySelector('.ghostimg')
-        // ghostimgDiv?.classList.add('display-none')
+        let ghostimgDiv = document.querySelector('.ghostimg')
+        ghostimgDiv?.classList.add('display-none')
       }
     })
 
