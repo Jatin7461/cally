@@ -99,13 +99,20 @@ function App() {
       x: -400,
       delay: 3.8,
       ease: 'power4.in',
-      opacity: 0
+      opacity: 0,
+      onComplete: () => {
+        headingDiv?.classList.add('display-none')
+      }
     })
     gsap.to('.bottom-left-home-text', {
       x: -400,
       delay: 3.8,
       ease: 'power4.in',
-      opacity: 0
+      opacity: 0,
+      onComplete: () => {
+        let bottomLeftHomeText = document.querySelector('.bottom-left-home-text')
+        bottomLeftHomeText?.classList.add('display-none')
+      }
     })
     gsap.to('.rightText', {
       x: -400,
@@ -119,9 +126,9 @@ function App() {
       ease: 'power4.in',
       opacity: 0
     })
-    gsap.to('.blackwoman', {
-      delay: 4
-    })
+    // gsap.to('.blackwoman', {
+    //   delay: 4
+    // })
 
     let anotherwoman = document.querySelector('.anotherwoman')!
     let blackwoman = document.querySelector('.blackwoman')!
@@ -137,19 +144,19 @@ function App() {
       let womanState = Flip.getState('.blackwoman')
       anotherwoman.classList.add('anotherwoman-2')
       blackwoman.classList.add('blackwoman-2')
+      verticalArrows?.classList.remove('display-none');
+
       anotherwoman.appendChild(blackwoman)
       Flip.from(womanState, {
         duration: 1, ease: "power4.inOut",
         onStart: () => {
-          verticalArrows?.classList.remove('display-none');
-        },
-        onComplete: () => {
-          headingDiv?.classList.add('display-none')
-          parentHomeDiv?.classList.add('parent-home-2')
           rightContentDiv?.classList.add('right-content-2')
+          parentHomeDiv?.classList.add('parent-home-2')
           rightContent2Div?.classList.remove('display-none');
           rightTextDiv?.classList.add('display-none')
           navigateButtonDiv?.classList.add('display-none')
+        },
+        onComplete: () => {
         }
       })
     }, 4300)
@@ -168,7 +175,7 @@ function App() {
       x: -400,
       y: 500,
       delay: 4.8,
-      duration: 0.7,
+      duration: 1,
       ease: "power4",
       onStart: () => { console.log('starting') }
     })
@@ -185,7 +192,6 @@ function App() {
     gsap.timeline().from('.cally-heading', {
       delay: 5,
       onStart: () => {
-        console.log('hih')
         bottomleft?.classList.remove('display-none')
       },
       opacity: 0,
