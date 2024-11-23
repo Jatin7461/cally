@@ -85,7 +85,11 @@ function App() {
       x: -400,
       delay: 4,
       ease: 'power4.in',
-      opacity: 0
+      opacity: 0,
+      onComplete: () => {
+        let ghostimgDiv = document.querySelector('.ghostimg')
+        ghostimgDiv?.classList.add('display-none')
+      }
     })
 
 
